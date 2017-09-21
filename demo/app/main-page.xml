@@ -1,0 +1,12 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
+  xmlns:ui="nativescript-aliyun-oss">
+  <StackLayout class="p-20">
+    <Label text="{{ message }}" class="t-20 text-center c-black" textWrap="true"/>
+    <Button text="test" onTap="test" />
+    <TextView  text="{{ url }}"  backgroundColor="#eee"/> <!-- loaded="TFLoad" -->
+    <Label id="la1" text="{{ progress }}" width="100"  backgroundColor="#eee"/> <!-- loaded="loaded="LaLoad"" -->
+    <GridLayout>
+      <Image id="img1" src="{{ imgSrc }}" width="200" height="200" backgroundColor="#ccc" onTap="chooseImage"/>
+    </GridLayout>
+  </StackLayout>
+</Page>

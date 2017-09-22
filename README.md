@@ -1,4 +1,4 @@
-# Your Plugin Name
+# nativescript-aliyun-oss
 
 Add your plugin badges here. See [nativescript-aliyun-oss](https://github.com/xushsh163/nativescript-aliyun-oss) for example.
 
@@ -20,20 +20,53 @@ tns plugin add nativescript-aliyun-oss
 
 ## Usage 
 
-Describe any usage specifics for your plugin. Give examples for Android, iOS, Angular if needed. See [nativescript-drop-down](https://www.npmjs.com/package/nativescript-drop-down) for example.
+First import:
 	
-	```javascript
-    Usage code snippets here
-    ```)
+```javascript
+    import { AliyunOss } from 'nativescript-aliyun-oss';
+```)
+
+(Optional) get uploadToken if needed, just a simple http get method
+
+```javascript
+    AliyunOss.getUploadToken('http://127.0.0.1?userId=xxxx&password=xxx', (ret) => {
+  	dosomething here
+    });
+```)
+
+upload
+
+```javascript
+AliyunOss.upload(fileUri, 'file', uploadUrl, JSON.stringify(param),
+	(pro) => {
+	    console.log('AliyunOss.progress: ' + pro * 100);
+	},
+	(ret) => {
+	    console.log('AliyunOss.upload: ' + ret);
+	});
+```)
+
+or in IOS you can directly send UIImage
+
+```javascript
+   const ret2 = AliyunOss.uploadImg(ImageSource.ios, imageName, 'file', uploadUrl, JSON.stringify(param),
+	(pro) => {
+	    console.log('AliyunOss.progress: ' + (pro * 100).toFixed(2));
+	},
+	(ret) => {
+	    console.log('AliyunOss.upload: ' + ret);
+	});
+    console.log('upload: ' + ret2);
+```)
 
 ## API
 
-Describe your plugin methods and properties here. See [nativescript-feedback](https://github.com/EddyVerbruggen/nativescript-feedback) for example.
     
-| Property | Default | Description |
+| func | Platfomr | Description |
 | --- | --- | --- |
-| some property | property default value | property description, default values, etc.. |
-| another property | property default value | property description, default values, etc.. |
+| getUploadToken | ios/android | just a async http get |
+| upload | ios/android | upload by filePath |
+| uploadImg | ios | because filePath doesn't work well in ios, you can use this directly uploading UIImage |
     
 ## License
 
